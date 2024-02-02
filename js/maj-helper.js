@@ -28,7 +28,8 @@ function csvToJson(csv) {
  * 多账号玩家映射（小号=>大号）
  */
 let mapping = {
-    "伊小鹤": "伊纸鹤"
+    "伊小鹤": "伊纸鹤",
+    "牵着窝仔去旅行":"WoZao"
 }
 
 function calc(list) {
@@ -41,13 +42,13 @@ function calc(list) {
 }
 
 function calcData(data, dict) {
-    let uid_1 = data['1位昵稱']
+    let uid_1 = data['1位昵稱']?data['1位昵稱']:data['1位昵称']
     let pt_1 = Number(data['1位得分'])
-    let uid_2 = data['2位昵稱']
+    let uid_2 = data['2位昵稱']?data['2位昵稱']:data['2位昵称']
     let pt_2 = Number(data['2位得分'])
-    let uid_3 = data['3位昵稱']
+    let uid_3 = data['3位昵稱']?data['3位昵稱']:data['3位昵称']
     let pt_3 = Number(data['3位得分'])
-    let uid_4 = data['4位昵稱']
+    let uid_4 = data['4位昵稱']?data['4位昵稱']:data['4位昵称']
     let pt_4 = Number(data['4位得分'])
     let flying = pt_4 < -40
     let u1 = dictGet(dict, mappingUser(uid_1))
@@ -58,7 +59,7 @@ function calcData(data, dict) {
     userAccrue(u2, "2位", pt_2)
     userAccrue(u3, "3位", pt_3)
     userAccrue(u4, flying ? "击飞" : "4位", pt_4)
-    let finish_time = new Date(data['結束時間'])
+    let finish_time = new Date(data['結束時間']?data['結束時間']:data['结束时间'])
     lastest_update_time = new Date(Math.max(lastest_update_time ? lastest_update_time : 0, finish_time))
 }
 
@@ -86,7 +87,7 @@ function userAccrue(userObj, rank, pt) {
     userObj['4位率'] = divPercent(userObj['4位'], userObj['场数'])
     userObj['击飞率'] = divPercent(userObj['击飞'], userObj['场数'])
     userObj['平顺'] = ((userObj['1位'] + userObj['2位'] * 2 + userObj['3位'] * 3 + userObj['4位'] * 4) / userObj['场数']).toFixed(4)
-    userObj['累计pt'] = add(userObj['累计pt'], pt)
+    userObj['累计pt'] = add(userObj['累计pt'], pt).toFixed(2)
     userObj['场均收支pt'] = (userObj['累计pt'] / userObj['场数']).toFixed(2)
     console.log(userObj)
 }
