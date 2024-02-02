@@ -124,7 +124,7 @@ function buildUser(uid) {
 }
 
 function add(num1 = 0, num2 = 0) {
-    return num1 + num2
+    return Number(num1) + Number(num2)
 }
 
 function divPercent(num1 = 0, num2 = 0) {
