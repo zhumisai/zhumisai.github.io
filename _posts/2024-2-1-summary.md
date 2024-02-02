@@ -7,6 +7,8 @@ tags: 雀魂-赛事数据
 ---
 
 ## 数据统计
+- 文件下载地址: [点我>>github](https://github.com/zhumisai/zhumisai.github.io/blob/master/_data/summary.csv)
+
 <style data-styled="active" data-styled-version="5.3.6"></style>
 <table class="bUEzXH" >
   <thead>
