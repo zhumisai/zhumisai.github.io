@@ -87,7 +87,10 @@ function userAccrue(userObj, rank, pt) {
     userObj['4位率'] = divPercent(userObj['4位'], userObj['场数'])
     userObj['击飞率'] = divPercent(userObj['击飞'], userObj['场数'])
     userObj['平顺'] = ((userObj['1位'] + userObj['2位'] * 2 + userObj['3位'] * 3 + userObj['4位'] * 4) / userObj['场数']).toFixed(4)
-    userObj['累计pt'] = add(userObj['累计pt'], pt).toFixed(2)
+    userObj['累计pt'] = add(userObj['累计pt'], pt)
+    if(userObj['累计pt'] ){
+        userObj['累计pt']  = userObj['累计pt'].toFixed(2)
+    }
     userObj['场均收支pt'] = (userObj['累计pt'] / userObj['场数']).toFixed(2)
     console.log(userObj)
 }
