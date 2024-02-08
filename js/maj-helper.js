@@ -29,7 +29,9 @@ function csvToJson(csv) {
  */
 let mapping = {
     "伊小鹤": "伊纸鹤",
-    "牵着窝仔去旅行":"WoZao"
+    "牵着窝仔去旅行":"WoZai",
+    "乂孒":"灯華",
+    "曦辉":"灯華"
 }
 
 function calc(list) {
